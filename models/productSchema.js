@@ -35,7 +35,11 @@ const productSchema = new Schema({
         type:Number, 
         default:true,
     },
-    quantitcolor: {
+    color: {
+        type:String,
+        required:true,
+    },
+    size: {
         type:String,
         required:true,
     },
@@ -52,7 +56,11 @@ const productSchema = new Schema({
         enum: ["Available", "Out of Stock", "Discountinued"],
         required:true,
         default:"Available"
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }    
 },{timestamps:true});
 
 

@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Men Fashion</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <link rel="shortcut icon" type="image/x-icon" href="#">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="https://kit.fontawesome.com/16d4885483.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+  /* General Styles */
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      height: 100vh; /* Full height for the viewport */
+      overflow: hidden; /* Prevent scrolling */
+  }
+  
+  /* Sidebar Styles */
+  .navbar-aside {
+      width: 250px; /* Fixed width for the sidebar */
+      height: 100%; /* Full height of the viewport */
+      background-color: #b0d5de;
+      position: fixed; /* Keeps the sidebar fixed to the left */
+      top: 0;
+      left: 0;
+      overflow-y: auto; /* Allows scrolling inside the sidebar */
+      display: flex;
+      flex-direction: column;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sidebar Menu */
+  .menu-aside {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .menu-item {
+      padding: 10px 20px;
+  }
+  
+  .menu-item a.menu-link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      color: #310505;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+  }
+  
+  .menu-item a.menu-link:hover,
+  .menu-item a.menu-link.active {
+      background-color: #6e7e6e;
+      color: #ffffff;
+  }
+  
+  .icon {
+      margin-right: 10px;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+      background-color: #bb9aaf;
+  }
+  
+  .dropdown-item:hover {
+      background-color: #33053d;
+      color: #ffffff;
+  }
+  
+  /* Main Content */
+  .main-wrap {
+      margin-left: 250px; /* Matches the sidebar width */
+      flex-grow: 1;
+      background-color: #ffffff;
+      height: 100%;
+      overflow-y: auto; /* Scrollable content */
+      padding: 20px; /* Adds spacing to the main content */
+  }
+  .main-header {
+    display: flex;
+    justify-content: space-between; /* Ensures space between left and right sections */
+    align-items: center; /* Vertically centers the content */
+    background-color: #8da7ab; /* Matches the sidebar style */
+    padding: 10px 20px; /* Adds padding for breathing space */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: sticky; /* Keeps the header fixed at the top of the content */
+    top: 0;
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+/* Search Column (if needed) */
+.col-search {
+    flex: 1; /* Allows the search area to take up available space */
+}
+
+/* Navigation Section (Right Side) */
+.col-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adds spacing between nav items */
+}
+
+.col-nav .btn-mobile {
+    display: none; /* Hides the mobile button by default */
+}
+
+.col-nav ul.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Dropdown Menu */
+.nav-item {
+    position: relative; /* Required for dropdown positioning */
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 120%; /* Places the dropdown below the toggle */
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px;
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 1001; /* Ensures it appears above other elements */
+    display: none; /* Hidden by default */
+}
+
+.dropdown-menu.show {
+    display: block; /* Displays the dropdown when toggled */
+}
+
+.dropdown-item {
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #33053d; /* Adds hover effect */
+    color: #fff;
+}
+
+.img-xs {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* Circular avatar */
+    object-fit: cover; /* Ensures the image fits inside the circle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-nav .btn-mobile {
+        display: block; /* Shows the mobile button on smaller screens */
+    }
+
+    .col-search {
+        display: none; /* Hides the search column for smaller screens */
+    }
+
+    .dropdown-menu {
+        right: auto; /* Adjust dropdown positioning */
+        left: 0;
+    }
+}
+  </style>
+</head>
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <a href="#" class="brand-wrap">
+                <img src="/img/logo.png"  class="logo" alt="Men Fashion Dashboard">
+            </a>
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/dashboard"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/users"> <i class="icon material-icons md-person"></i>
+                        <span class="text">Customers</span>
+                    </a>
+
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/category"> <i class="icon material-icons md-person"></i>
+                        <span class="text">Category</span>
+                    </a>
+
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/brands"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/addProducts"> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Add product</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/products"> <i class="icon material-icons md-shopping_bag"></i>
+                        <span class="text">Products</span>
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/coupon"> <i class="icon material-icons md-class"></i>
+                        <span class="text">Coupon</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/banner"> <i class="icon material-icons md-photo_size_select_actual"></i>
+                        <span class="text">Banner</span> </a>
+                </li>
+
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/orderList"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/logout"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">LogOut</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/img/img.png" alt="User"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <div class="dropdown-divider"></div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>

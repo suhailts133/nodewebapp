@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Management</title>
+    <link rel="stylesheet" href="path/to/your/css">
+    <style>
+        /* Sample styling for table */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-toggle {
+            padding: 5px 12px;
+            font-size: 14px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .btn-list {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-list:hover {
+            background-color: #19692c;
+        }
+
+        .btn-unlist {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-unlist:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <%- include("../../views/partials/admin/header") %>
+    <h2>Category Management</h2>
+    <a class=".btn-list" href="/admin/addCategory">Add Category</a>
+    <% if (categories.length === 0) { %>
+        <p>No categories found. Please add a category.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>list/unlist</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the categories and render each one -->
+                <% categories.forEach(category => { %>
+                    <tr>
+                        <td><%= category.name %></td>
+                        <td><%= category.description %></td>
+                        <td>
+                            <!-- Show "Unlist" if the category is listed, otherwise show "List" -->
+                            <% if (category.isListed) { %>
+                                <a href="/admin/unlistCategory?id=<%= category._id %>" class="btn btn-unlist">Unlist</a>
+                            <% } else { %>
+                                <a href="/admin/listCategory?id=<%= category._id %>" class="btn btn-list">List</a>
+                            <% } %>
+                        </td>
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="/admin/editCategory/<%= category._id %>" class="btn btn-edit">Edit</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+
+
+</body>
+</html>

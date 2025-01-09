@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .alert {
+            padding: 15px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .alert .close-btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #721c24;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .invalid-feedback {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <%- include("../../views/partials/admin/header") %>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Add Category</h1>
+
+        <!-- Error Message Section -->
+        <% if (typeof error !== 'undefined') { %>
+            <div class="error-message alert">
+                <%= error %>
+                <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+            </div>
+        <% } %>
+
+        <!-- Add Category Form -->
+        <form action="/admin/addCategory" method="POST" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="name" class="form-label">Category Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    value="<%= typeof name !== 'undefined' ? name : '' %>"
+                    required
+                />
+                <div class="invalid-feedback">Name cannot be empty or spaces only.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Description:</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    rows="4"
+                    required
+                ><%= typeof description !== 'undefined' ? description : '' %></textarea>
+                <div class="invalid-feedback">Description cannot be empty or spaces only.</div>
+            </div>
+
+            <div class="form-actions">
+                <a href="/admin/category" class="btn btn-secondary">Go Back</a>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector("form");
+            const errorDiv = document.querySelector(".error-message");
+            const nameField = document.getElementById("name");
+            const descriptionField = document.getElementById("description");
+
+            form.addEventListener("submit", (event) => {
+                const name = nameField.value.trim();
+                const description = descriptionField.value.trim();
+
+                // Clear previous error messages
+                if (errorDiv) {
+                    errorDiv.style.display = "none";
+                }
+
+                // Validate for empty or spaces-only fields
+                let hasError = false;
+
+                if (!name) {
+                    nameField.classList.add("is-invalid");
+                    hasError = true;
+                } else {
+                    nameField.classList.remove("is-invalid");
+                }
+
+                if (!description) {
+                    descriptionField.classList.add("is-invalid");
+                    hasError = true;
+                } else {
+                    descriptionField.classList.remove("is-invalid");
+                }
+
+                // Prevent form submission if there's an error
+                if (hasError) {
+                    event.preventDefault();
+                    if (errorDiv) {
+                        errorDiv.style.display = "block";
+                        errorDiv.innerHTML = "Name and description cannot be empty or spaces only.";
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

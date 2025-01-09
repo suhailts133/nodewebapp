@@ -11,17 +11,18 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
+        // match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"],
     },
     phone: {
         type: String,
         required: false,
         unique: false,
-        spare: true,
+        sparse:true,
         default:null
     },
     googleId: {
         type: String,
-        unique: true
+        sparse: true
     },
     password:{
         type: String,
@@ -59,7 +60,8 @@ const userSchema = new Schema({
         type: String
     },
     redeemed: {
-        type: Boolean
+        type: Boolean,
+        default:false, //1
     },
     redeemedUsers: [{
         type: Schema.Types.ObjectId,
@@ -79,5 +81,6 @@ const userSchema = new Schema({
         }
     }]
 })
+
 const User = mongoose.model("User", userSchema);
 module.exports = User;

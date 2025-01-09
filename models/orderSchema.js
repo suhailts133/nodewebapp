@@ -39,7 +39,7 @@ const orderSchema = new Schema({
     address:{
         type: Schema.Types.ObjectId,
         ref: "User",
-        requried:true,
+        required:true
     },
     invoiceDate:{
         type: Date,
